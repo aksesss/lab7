@@ -1,0 +1,54 @@
+{%  extends 'base.html' %}
+
+{%  block head_buttons %}
+
+      <li><a href={% url 'main_url' %}>Домой</a></li>
+      <li><a href={% url "info_url" %}>Инфо</a></li>
+      <li class="active"><a href={% url "goods_url"%}>Товары</a></li>
+      <li><a href="#">Контакты</a></li>
+{#      <li><a href={% url "good_numb_url" 1%}><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>#}
+
+{% endblock %}
+
+
+{% block body1 %}
+
+        <div class="container">
+            <div class="row">
+                {% if request.user.is_authenticated %}
+                    <div class="col-lg-1 col-lg-offset-2">
+                    <table>
+
+                        <caption class="fa-3x"><a href={% url "goods_url" %}> Товары  </a></caption>
+
+                        <tr href="#" data-href-template="#" class="fa-2x">
+                            <th>Номер</th>
+                            <th>Название</th>
+                            <th>Колличество</th>
+                        </tr>
+
+                        {% for good in obj_list %}
+                            <tr data-href-template={% url "goods_url"%}?id={{ good.good_id }}>
+{#                            {% url "#" unvier.good_id %}#}
+                                <td><a href={% url "goods_url"%}?id={{ good.good_id }} >  {{ good.good_id }}  </a>  </td>
+                                <td><h4>{{ good.good_name }}</h4></td>
+                                <td><h4>{{ good.good_count }}</h4></td>
+                            </tr>
+                        {% endfor %}
+
+                        <div class="col-lg-2 col-lg-offset-7">
+                            <h2>
+                                <a href={% url "goods_add_url" %}>Добавить товар</a>
+                            </h2>
+                        </div>
+                    </table>
+                    </div>
+
+                {% else %}
+                    <div class="col-lg-12 col-lg-offset-0">
+                        <h2>Чтобы просматривать таблицу, нужно авторизоваться</h2>
+                    </div>
+                {% endif %}
+        </div>
+    </div>
+{% endblock %}

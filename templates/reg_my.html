@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{%  block head_buttons %}
+
+      <li><a href={% url 'main_url' %}>Домой</a></li>
+      <li><a href={% url "info_url" %}>Инфо</a></li>
+      <li><a href={% url "goods_url"%}>Товары</a></li>
+      <li><a href="#">Контакты</a></li>
+{#      <li><a href={% url "good_numb_url" 1%}><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>#}
+
+{% endblock %}
+
+
+
+{% block body1 %}
+
+        <div class="col-lg-2 col-lg-offset-4">
+            <div id="headerwrap1">
+<form method="POST">
+            <div class="auth_block">
+                {% csrf_token %}
+                <div class="auth_blank">
+                    <label>
+                        Логин
+                    </label>
+                    <div class="form-block">
+                        <input type="text" name="username" value="{{ username }}">
+                        {% if errors.username != '' %}
+                            <div class="form-error">{{ errors.username }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="auth_blank">
+                    <label>
+                        Пароль
+                    </label>
+                    <div class="form-block">
+                        <input type="password" name="password">
+                        {% if errors.password != '' %}
+                            <div class="form-error">{{ errors.password }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="auth_blank">
+                    <label>
+                        Повторите пароль
+                    </label>
+                    <div class="form-block">
+                        <input type="password" name="password2">
+                        {% if errors.password2 != '' %}
+                            <div class="form-error">{{ errors.password2 }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="auth_blank">
+                    <label>
+                        E-mail
+                    </label>
+                    <div class="form-block">
+                        <input type="email" name="email" value="{{ email }}">
+                        {% if errors.email != '' %}
+                            <div class="form-error">{{ errors.email }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="auth_blank">
+                    <label>
+                        Имя
+                    </label>
+                    <div class="form-block">
+                        <input type="text" name="firstname" value="{{ firstname }}">
+                        {% if errors.firstname != '' %}
+                            <div class="form-error">{{ errors.firstname }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="auth_blank">
+                    <label>
+                        Фамилия
+                    </label>
+                    <div class="form-block">
+                        <input type="text" name="surname" value="{{ surname }}">
+                        {% if errors.surname != '' %}
+                            <div class="form-error">{{ errors.surname }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <br>
+                <button type="submit">Зарегистрироваться</button>
+            </div>
+</form>
+
+
+            </div>
+        </div>
+{#    </div>#}
+{#</div>#}
+{% endblock %}

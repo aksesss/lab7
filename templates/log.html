@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{%  block head_buttons %}
+
+      <li><a href={% url 'main_url' %}>Домой</a></li>
+      <li><a href={% url "info_url" %}>Инфо</a></li>
+      <li><a href={% url "goods_url"%}>Товары</a></li>
+      <li><a href="#">Контакты</a></li>
+{#      <li><a href={% url "good_numb_url" 1%}><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>#}
+
+{% endblock %}
+
+
+
+{% block body1 %}
+{#<div class="container">#}
+{#    <div class="row">#}
+        <div class="col-lg-2 col-lg-offset-4">
+            <div id="headerwrap1">
+                <form action="" method="post">
+                   {% csrf_token %}
+                    <!-- as_p для того, чтобы каждый элемент формы был с новой строки -->
+                    {% for v in error_messages %}
+                        <h3>v</h3>
+                    {% endfor %}
+
+{#                    <h3>Username</h3>#}
+{#                    {{ form.username }}#}
+{#                    <h3>Password</h3>#}
+{#                    {{ form.password1 }}#}
+{#                    <h3>Repeat Password</h3>#}
+{#                    {{ form.password2 }}#}
+{#                    <br><br>#}
+{#                    {{ form.first_name }}#}
+
+                    {{ form.as_p }}
+
+                    <button type="submit">Зарегистрироваться</button>
+
+                </form>
+            </div>
+        </div>
+{#    </div>#}
+{#</div>#}
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block body1 %}
+{#<div class="container">#}
+{#    <div class="row">#}
+        <div class="col-lg-2 col-lg-offset-4">
+            <div id="headerwrap1">
+                <form action="" method="post">
+                   {% csrf_token %}
+                    <!-- as_p для того, чтобы каждый элемент формы был с новой строки -->
+                    {% for v in error_messages %}
+                        <h3>v</h3>
+                    {% endfor %}
+
+                    <h3>Username</h3>
+                    {{ form.username }}
+                    <h3>Password</h3>
+                    {{ form.password }}
+                    <br><br>
+
+{#                    {{ form.as_p }}#}
+
+                    <button type="submit">Войти</button>
+
+                </form>
+                <br>
+
+                <form method="get" action={% url "reg_my_url" %}>
+                    <button type="submit">Регистрация</button>
+                </form>
+
+            </div>
+        </div>
+{#    </div>#}
+{#</div>#}
+{% endblock %}
